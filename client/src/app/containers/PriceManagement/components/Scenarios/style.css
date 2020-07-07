@@ -1,0 +1,25 @@
+#params{
+    width: 100%;
+    display:flex;
+}
+
+#params div{
+    width: 25%;
+    height: 17vh;
+    background-color: rgb(75, 75, 75);
+    padding: 2px;
+}
+
+#params div form{
+    align-content: center;
+}
+
+#buttons button{
+    background-image: linear-gradient(to left, rgb(94, 94, 94), rgb(61, 61, 61));
+    margin-top: 20px;
+    width: 90%;
+}
+
+#buttons button:hover{
+    background-image: linear-gradient(to left, rgb(59, 59, 59), rgb(61, 61, 61));
+}

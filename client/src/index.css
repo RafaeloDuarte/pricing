@@ -1,0 +1,144 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+svg {
+    overflow: visible;
+}
+
+.table{
+    width: 100%;
+}
+
+.logo {
+    height: 63px;
+}
+
+.container-margin {
+    margin-left: 300px;
+}
+
+nav .nav-wrapper .title-span {
+    position: absolute;
+    top: inherit;
+    font-size: 33px;
+    width: 800px;
+    margin-left: 25vw;
+    color: rgb(159, 160, 158);
+}
+
+nav .nav-wrapper .title-span strong {
+    position: relative;
+    top: inherit;
+    font-weight: 650;
+    font-size: 34px;
+    color: white;
+}
+
+.card-com-texto {
+    min-height: 300px;
+    max-height: 300px;
+    line-height: 23px;
+    font-size: smaller;
+}
+
+.card-image {
+    height: 150px;
+    /* Your height here */
+    overflow: hidden;
+}
+
+.content-overlay {
+    background: rgb(23, 2, 99);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0.4;
+    /*
+  //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
+  transition: all 0.4s ease-in-out 0s;
+  */
+}
+
+.text-title {
+    font-size: medium;
+}
+
+.text-subtitle {
+    font-size: 20px;
+}
+
+.logo-img {
+    margin-left: 22px;
+    padding: 5px;
+    height: 60px;
+}
+
+.card-icon {
+    margin: 0;
+    padding: 0;
+    height: 90px;
+    font-size: medium;
+}
+
+.card .card-image span {
+    font-size: 30px;
+    font-weight: 400;
+    text-shadow: 3px 0px 3px rgb(0, 0, 0, 1);
+}
+
+.lnk span {
+    font-size: 20px;
+    text-align: center;
+    color: rgb(19, 5, 150);
+    text-shadow: 3px 0px 2px rgba(0, 0, 0, 0.3);
+}
+
+.divider {
+    margin-bottom: 5px;
+}
+
+.mysidebar {
+    width: 263px;
+    height: 100%;
+    position: absolute;
+    background-color: pink;
+}
+
+.mysidebar ul li {
+    padding: 1rem;
+}
+
+.mysidebar ul li a {
+    display: block;
+    color: #111;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones:*/
+    body {
+        background-color: rgb(53, 79, 114);
+    }
+    .nav-wrapper .brand-logo {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    /* For desktop*/
+    .nav-wrapper .brand-logo-mobile {
+        display: none;
+    }
+}

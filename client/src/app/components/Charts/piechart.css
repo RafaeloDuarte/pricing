@@ -1,0 +1,13 @@
+.piechart {
+    border-radius: 10px;
+    background-color: rgb(1, 34, 34);
+}
+
+.piechart h4 {
+    color: wheat;
+}
+
+.piechart svg {
+    margin-top: 0px;
+    padding-bottom: 40px;
+}

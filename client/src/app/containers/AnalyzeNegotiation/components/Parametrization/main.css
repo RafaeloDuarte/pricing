@@ -1,0 +1,47 @@
+.Parametrization{
+    display: flex;
+
+}
+
+.Parametrization div{
+    min-width: 90px;
+    max-height: 120px;
+    margin: 2px
+}
+.Parametrization p{
+    color: bisque;
+    margin-top: 20px;
+}
+
+.promocional{
+    border-style: solid;
+    border-radius: 5px;
+    width: 20%;
+    margin-top: 10px;
+    display: flex;
+}
+.promocional div{
+    margin-left: 10%;
+    margin-top: -4%;
+}
+.basic-filter{
+    margin-top: 100%;
+    border-style: solid;
+    border-radius: 5px;
+    width: 20%;
+}
+
+.Competition{
+    border-style: solid;
+    border-radius: 5px;
+}
+.Competition div{
+    margin-top: -2px;
+}
+.sensibility{
+    border-style: solid;
+    border-radius: 5px;
+}
+.sensibility div{
+    margin-top: -5px;
+}

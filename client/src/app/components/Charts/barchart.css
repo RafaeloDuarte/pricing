@@ -1,0 +1,9 @@
+.barchart{
+    border-radius: 10px;
+}
+.barchart svg{
+    margin-top: 0%;
+}
+.barchart h4{
+    color: wheat;
+}

@@ -1,0 +1,21 @@
+.Date {
+  margin-top: -28%;
+  margin-left: 30%;
+}
+
+.Date div{
+  color: aliceblue;
+}
+
+.bg {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .8);
+  position: absolute;
+}
+
+.show {
+  display: block !important;
+}

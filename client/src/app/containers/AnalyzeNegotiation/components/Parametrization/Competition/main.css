@@ -1,0 +1,7 @@
+.Competition {
+    display: flex;
+}
+
+.Competition div {
+    min-width: 100px;
+}

@@ -1,0 +1,10 @@
+.box {
+    top: 50%;
+    left: 50%;
+}
+.box select{
+    background-color: teal;
+    min-width: 160px;
+    max-width: 160px;
+    color: white;
+}

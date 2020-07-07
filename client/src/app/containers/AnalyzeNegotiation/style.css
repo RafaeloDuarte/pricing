@@ -1,0 +1,31 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #292929;
+}
+
+label {
+  color: bisque;
+}
+
+.charts {
+  margin-top: 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.barchart {
+  grid-column: 1/2;
+  margin-left: 0px;
+  background-color: rgb(0, 71, 71);
+}
+
+.Table {
+  grid-column: 3/4;
+  margin-top: 0px;
+}
+
+.piechart {
+  grid-column: 2/3;
+}

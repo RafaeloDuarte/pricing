@@ -1,0 +1,36 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #292929;
+}
+
+label {
+  color: bisque;
+}
+
+.PriceManagement{
+  display: grid;
+  grid-template-areas: 
+  'filter scenarios'
+  'filter tables';
+  grid-template-columns: .2fr 1fr;
+  grid-template-rows: 30vh 70vh;
+}
+
+#filter{
+  background-color:rgb(99, 99, 99);
+  grid-area: filter;
+}
+
+#scenarios{
+  background-color:rgb(85, 85, 85);
+  grid-area: scenarios;
+  display: flex;
+  flex-wrap: wrap;
+  color:honeydew;
+}
+
+#table{
+  grid-area: tables;
+}

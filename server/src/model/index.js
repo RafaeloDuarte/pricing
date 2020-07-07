@@ -1,0 +1,6 @@
+require('./cluster')
+require('./loja')
+require('./precoPesquisa')
+require('./precoVenda')
+require('./produto')
+require('./usuario')
