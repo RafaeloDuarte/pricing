@@ -4,7 +4,17 @@
 }
 .box select{
     background-color: teal;
-    min-width: 160px;
-    max-width: 160px;
-    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 70%;
+    height: 50px;
+    color: rgb(231, 231, 231);
+    font-size: larger;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.box select option{
+    
 }

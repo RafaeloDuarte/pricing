@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 import './main.css'
 // import { Container } from './styles';
 
-export default function Select({ value, firstEl, list, toggle }) {
+function Select({ value, firstEl, list, toggle }) {
     return (
         <div className="box">
-            <select value={value} onChange={e => toggle(e.currentTarget)}>
+            <select value={value} onChange={toggle}>
                 <option>{firstEl}</option>
                 {list && list.map(element =>
                     <option
@@ -19,3 +19,6 @@ export default function Select({ value, firstEl, list, toggle }) {
         </div>
     );
 }
+
+
+export default memo(Select)
