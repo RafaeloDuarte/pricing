@@ -14,8 +14,7 @@ export default function PriceDate() {
   function getDates(startDate, stopDate) {
     var dateArray = [];
     var currentDate = moment(formatDay(startDate));
-    var stopDate = moment(formatDay(stopDate));
-    while (currentDate <= stopDate) {
+    while (currentDate <= moment(formatDay(stopDate))) {
       dateArray.push(moment(currentDate).format('DD/MM/YYYY'))
       currentDate = moment(currentDate).add(1, 'days');
     }

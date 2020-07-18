@@ -7,12 +7,12 @@ export default function Cards({ cardList }) {
     function showNonPassMessage() {
         var show = document.getElementById('snackbar')
         show.className = 'show'
-        setTimeout(function(){show.className= ''} , 3000)
+        setTimeout(function () { show.className = '' }, 3000)
     }
 
     return (
         <div className="container">
-            {cardList.map(card => {
+            {cardList.map((card, key) => {
                 return (
                     <>
                         <div className="card">

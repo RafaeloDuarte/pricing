@@ -7,9 +7,9 @@ function Select({ value, firstEl, list, toggle }) {
         <div className="box">
             <select value={value} onChange={toggle}>
                 <option>{firstEl}</option>
-                {list && list.map(element =>
+                {list && list.map((element, key) =>
                     <option
-                        key={element}
+                        key={key}
                         value={element}
                     >
                         {element}

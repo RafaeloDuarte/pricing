@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import axios from 'axios'
 import Select from '../../../../components/Select'
 import uri from '../../../../config/apiClient'
@@ -15,7 +15,7 @@ function Filter(props) {
     const [subgroups, setSubgroups] = useState([])
     const [products, setProducts] = useState([])
 
-    const [cluster, setCluster] = useState('cluster')
+    const [cluster, setCluster] = useState('')
     const [store, setStore] = useState('loja')
     const [departament, setDepartament] = useState('Departamento')
     const [section, setSection] = useState('Seção')
@@ -23,20 +23,8 @@ function Filter(props) {
     const [subgroup, setSubgroup] = useState('Subgrup')
     const [product, setProduct] = useState('Produto')
 
-    function convertPgData(pgdata) {
-        if (pgdata) {
-            let data = pgdata.split(',')
-            data = data.map(
-                d => d.replaceAll('{', '')
-                    .replaceAll('}', '')
-                    .replaceAll('\"', '')
-                    .replaceAll('NULL', '')
-            )
-            return data
-        }
-    }
-
     const getOptionsFromAPI = () => {
+        console.log('rws')
         axios.get(`${uri}\\cluster`)
             .then(res => {
                 setClusters(convertPgData(res.data[0].filter_options_clusters))
@@ -45,7 +33,7 @@ function Filter(props) {
                 console.log(res)
             })
 
-        axios.get(`${uri}\\loja`)
+        axios.post(`${uri}\\loja`)
             .then(res => {
                 setStores(convertPgData(res.data[0].filter_options_lojas))
             })
@@ -53,7 +41,7 @@ function Filter(props) {
                 console.log(res)
             })
 
-        axios.get(`${uri}\\departamento`)
+        axios.post(`${uri}\\departamento`)
             .then(res => {
                 setDepartaments(convertPgData(res.data[0].filter_options_departamentos))
             })
@@ -61,7 +49,7 @@ function Filter(props) {
                 console.log(res)
             })
 
-        axios.get(`${uri}\\secoes`)
+        axios.post(`${uri}\\secoes`)
             .then(res => {
                 setSections(convertPgData(res.data[0].filter_options_secoes))
             })
@@ -69,7 +57,7 @@ function Filter(props) {
                 console.log(res)
             })
 
-        axios.get(`${uri}\\grupo`)
+        axios.post(`${uri}\\grupo`)
             .then(res => {
                 setGroups(convertPgData(res.data[0].filter_options_grupos))
             })
@@ -84,21 +72,76 @@ function Filter(props) {
             .catch(res => {
                 console.log(res)
             })
+        setProduct(['A implementar'])
     }
 
-    useEffect(() => {
-        getOptionsFromAPI()
-    }, [])
-
-    function toggleOps(value) {
-        axios.get(`${uri}\\loja`, { cluster: value })
-            .then(res => {
-                setStores(convertPgData(res.data[0].filter_options_lojas))
-            })
-            .catch(res => {
-                console.log(res)
-            })
+    function convertPgData(pgdata) {
+        if (pgdata) {
+            let data = pgdata.split(',')
+            data = data.map(
+                d => d.replaceAll('{', '')
+                    .replaceAll('}', '')
+                    .replaceAll('\"', '')
+                    .replaceAll('NULL', '')
+            )
+            return data
+        }
     }
+
+    function toggleOps(value, type) {
+        switch (type) {
+            case 'cluster':
+                setStores([])
+                axios.post(`${uri}\\loja`, null, { params: { cluster: clusterTreatment(value) } })
+                    .then(res => {
+                        setStores(convertPgData(res.data[0].filter_options_lojas))
+                    })
+                    .catch(res => {
+                        console.log(res)
+                    })
+            case 'departamento':
+                axios.post(`${uri}\\secoes`, null, { params: { departament: value } })
+                    .then(res => {
+                        setSections(convertPgData(res.data[0].filter_options_secoes))
+                    })
+                    .catch(res => {
+                        console.log(res)
+                    })
+            case 'secao':
+                axios.post(`${uri}\\grupo`, null, { params: { section: value } })
+                    .then(res => {
+                        setSections(convertPgData(res.data[0].filter_options_grupos))
+                    })
+                    .catch(res => {
+                        console.log(res)
+                    })
+            case 'grupo':
+                axios.post(`${uri}\\subgrupo`, null, { params: { group: value } })
+                    .then(res => {
+                        setSections(convertPgData(res.data[0].filter_options_subgrupos))
+                    })
+                    .catch(res => {
+                        console.log(res)
+                    })
+        }
+    }
+
+    function clusterTreatment(value) {
+        switch (value) {
+            case 'BIGBOX':
+                return 1
+            case 'ULTRABOX NORTE':
+                return 2
+            case 'ULTRABOX SUDESTE':
+                return 3
+            case 'ULTRABOX NOROESTE':
+                return 4
+        }
+    }
+
+    useMemo(getOptionsFromAPI, [])
+
+    console.log('teste')
 
     return (
         <div id='filter'>
@@ -107,49 +150,49 @@ function Filter(props) {
                 list={clusters}
                 firstEl='Cluster'
                 toggle={e => {
-                    toggleOps(e.target.value)
+                    toggleOps(e.target.value, 'cluster')
                     setCluster(e.target.value)
                 }} />
             <Select value={store}
                 list={stores}
                 firstEl='Loja'
                 toggle={e => {
-                    toggleOps()
+                    toggleOps(e.target.value, 'loja')
                     setStore(e.target.value)
                 }} />
             <Select value={departament}
                 list={departaments}
                 firstEl='Departamento'
                 toggle={e => {
-                    toggleOps()
+                    toggleOps(e.target.value, 'departamento')
                     setDepartament(e.target.value)
                 }} />
             <Select value={section}
                 list={sections}
                 firstEl='Seção'
                 toggle={e => {
-                    toggleOps()
+                    toggleOps(e.target.value, 'secao')
                     setSection(e.target.value)
                 }} />
             <Select value={group}
                 list={groups}
                 firstEl='Grupo'
                 toggle={e => {
-                    toggleOps()
+                    toggleOps(e.target.value, 'grupo')
                     setGroup(e.target.value)
                 }} />
             <Select value={subgroup}
                 list={subgroups}
                 firstEl='Subgrupo'
                 toggle={e => {
-                    toggleOps()
+                    toggleOps(e.target.value, 'subgrupo')
                     setSubgroup(e.target.value)
                 }} />
             <Select value={product}
                 list={products}
                 firstEl='Produto'
                 toggle={e => {
-                    toggleOps()
+                    toggleOps(e.target.value, 'a ver')
                     setProduct(e.target.value)
                 }} />
         </div>

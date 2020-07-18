@@ -26,8 +26,6 @@ label {
 #scenarios{
   background-color:rgb(85, 85, 85);
   grid-area: scenarios;
-  display: flex;
-  flex-wrap: wrap;
   color:honeydew;
 }
 

@@ -4,8 +4,9 @@ const queries = require('../database/queries')
 const secaoErrorHandler = e => {return {err: e}}
 
 const secoes = (req, resp, next) => {
+    var departament = req.query.departament ? req.query.departament : null
     var section = req.query.section ? req.query.section : null
-    var sql = `SELECT bigbox.filter_options_secoes(${section})`;
+    var sql = `SELECT bigbox.filter_options_secoes(${section},'${departament}')`;
     pool.query(sql)
         .then(res => resp.json(res.rows))
         .catch(e => resp.json(secaoErrorHandler(e)))

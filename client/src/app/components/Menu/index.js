@@ -5,8 +5,8 @@ function Menu({ menuOptions }) {
     return (
         <div className="menu">
             <ul className="topnav">
-                {menuOptions.map(option => (
-                    <li>
+                {menuOptions.map((option,key) => (
+                    <li key={key}>
                         <a href="#about">
                             {option}
                         </a>

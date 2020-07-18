@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const secoes = require('../../../controllers/SecaoController')
 
-router.get('/', secoes)
+router.post('/', secoes)
 
 module.exports = router

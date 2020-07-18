@@ -5,7 +5,8 @@ const groupErrorHandler = e => {return {err: e}}
 
 const grupos = (req, resp, next) => {
     var group = req.query.group ? req.query.group : null
-    var sql = `SELECT bigbox.filter_options_grupos(${group})`;
+    var section = req.query.section ? req.query.section : null
+    var sql = `SELECT bigbox.filter_options_grupos(${group},${section})`;
     pool.query(sql)
         .then(res => resp.json(res.rows))
         .catch(e => resp.json(groupErrorHandler(e)))

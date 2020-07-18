@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const grupos = require('../../../controllers/GrupoController')
 
-router.get('/', grupos)
+router.post('/', grupos)
 
 module.exports = router
